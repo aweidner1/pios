@@ -1,51 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-//geeksforgeeks.org was used a lot in helping me write linked list
 
-//struct Node* head = NULL;
-//struct Node* current;
+void list_add(struct list_element *list_head, struct list_element *new_data){
+	struct list_element * prev = list_head;
 
-//trying different route
-//int list_add(int data){
-//	struct Node* new_node = NULL;
-///	new_node->value = data;
-//	current->next = new_node;
-//	current = new_node;
-//	return 0;
-//}
-void list_add(struct list_element** head, int new_data){
-	struct list_element* new_node;
-	struct list_element* last = *head;
-	new_node->data = new_data;
-	new_node->next = NULL;
-
-	if(*head == NULL){
-		new_node->prev=NULL;
-		*head = new_node;
+	if(prev == NULL){
+		list_head = new_data;
 		return;
 	}
-	while(last->next != NULL)
-		last = last->next;
-
-	last->next = new_node;
-	new_node->prev = last;
-	return;
+	while(prev->next != NULL){
+		prev = prev->next;
+	}
+	new_node->prev = prev;
+	prev->next = new_node;
 }
-void list_remove(struct list_element **head, int rem_data){
-	struct list_element* temp = *head, *prev;
-	if(temp != NULL && temp->data == rem_data){
-		*head = temp->next;
+void list_remove(struct list_element * element, int data){
+	//whatever the pointer is, remoove the element
+	struct list_element * head_pointer = list_head;
+	if(list_head == NULL)
+		return;
+	if(head_pointer->data == data){
+		*element = data->next;
 		return;
 	}
-	while(temp != NULL && temp->data != rem_data){
-		//prev = current;
-		prev = temp;
-		//current = current->next;
-		temp = temp->next;
+	while(head_pointer->next){
+		if(data == head_pointer->data){
+			head_pointer->prev->next = head_pointer->next;
+			head_pointer = head_pointer->next;
+			continue;
+		}
+		head_pointer = head_pointer->next;
 	}
-	if(temp == NULL)
-		return;
-
-	prev->next = temp->next;
 }
