@@ -16,6 +16,9 @@ OBJS = \
 	boot.o \
 	kernel_main.o \
 	list.o \
+	blinky.o \
+	//serial.o ADDED IN CLASS W NEIL? This is how to add new src file
+
 
 
 
