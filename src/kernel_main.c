@@ -1,7 +1,8 @@
-#include <stdio.h>
+#include <stdio.h>//comment this out for serial port hw
 #include "blinky.h"
+//#include "serial.c"//added for serial port hw in tuesday class
 int global;
-
+//#define NULL (void*)0; //added for serial port hw in tuesday class
 extern long __bss_start;
 extern long __bss_end;
 
@@ -15,18 +16,20 @@ extern long __bss_end;
 //	}
 //}
 
+//int *mu_io_reg = 0x3F215040; //added for serial port hw in tuesday class
 void kernel_main(){
 //	clear_bss();
 	led_init();
 	//int *mu_io_reg = 0x7E215040;
+//	*mu_io_reg = 'A';
+//	*mu_io_reg = 'L';
+//	*mu_io_reg = 'E';
+//	*mu_io-reg = 'C';
+	//esp_printf(putc, "The memory location is %x", kernel_main); //added for serial port hw tuesday class
     while(1){
-	led_on();
+	led_on(); //comment these out before commit and pushing serial port hw
 	delay(10);
 	led_off();
 	delay(10);
-	    //*mu_io_reg = 'A';
-	    //*mu_io_reg = 'L';
-	    //*mu_io_reg = 'E';
-	    //*mu_io_reg = 'C';
     }
 }
