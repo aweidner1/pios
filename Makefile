@@ -17,8 +17,6 @@ OBJS = \
 	kernel_main.o \
 	list.o \
 	blinky.o \
-	//serial.o ADDED IN CLASS W NEIL? This is how to add new src file
-	//rprintf.o ADDED IN CLASS W NEIL? This is added as well with serial.o for Thursday hw
 
 
 
