@@ -17,6 +17,9 @@ OBJS = \
 	kernel_main.o \
 	list.o \
 	blinky.o \
+	serial.o \
+	rprintf.o \
+
 
 
 
